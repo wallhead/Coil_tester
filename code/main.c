@@ -34,6 +34,7 @@ SOFTWARE.
 #include  "setup.h"
 #include "OLED_Driver.h"
 #include "OLED_GUI.h"
+#include "defines.h"
 /* Private macro */
 
 /* Private variables */
