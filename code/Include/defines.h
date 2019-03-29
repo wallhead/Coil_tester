@@ -1,5 +1,5 @@
 /*
- * dwfines.h
+ * defines.h
  *
  *  Created on: 29 мар. 2019 г.
  *      Author: koroteev_d
