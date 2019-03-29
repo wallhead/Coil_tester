@@ -1,6 +1,6 @@
 #include "stm32f4xx.h"
 #include  "setup.h"
-
+#include "defines.h"
 /*---------------------------------------------------------------------------*/
 void RCC_Init(void);
 void MCO_out (void);

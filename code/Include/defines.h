@@ -8,9 +8,19 @@
 #ifndef INCLUDE_DEFINES_H_
 #define INCLUDE_DEFINES_H_
 
+//--------------------------------Delay--------------------------------------//
+
+#define CPU_CLK         96000000UL
+#define xms             CPU_CLK/1000-1
+#define xus             CPU_CLK/1000000UL-1
+
+//---------------------------GPIO_Defines--------------------------------------//
+
 /******************  Bits definition for GPIO_AFR[0] register  ****************/
 
-#define GPIO_AFRL0		((uint32_t)0x0000000F)
+#define GPIO_AFRL_RESET	((uint32_t)0x00000000)
+
+#define GPIO_AFRL0	    ((uint32_t)0x0000000F)
 #define GPIO_AFRL0_0	((uint32_t)0x00000001)
 #define GPIO_AFRL0_1	((uint32_t)0x00000002)
 #define GPIO_AFRL0_2	((uint32_t)0x00000004)
@@ -59,6 +69,8 @@
 #define GPIO_AFRL7_3	((uint32_t)0x80000000)
 
 /******************  Bits definition for GPIO_AFR[1] register  ****************/
+
+#define GPIO_AFRH_RESET	((uint32_t)0x00000000)
 
 #define GPIO_AFRH8		((uint32_t)0x0000000F)
 #define GPIO_AFRH8_0	((uint32_t)0x00000001)

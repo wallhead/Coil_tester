@@ -34,7 +34,7 @@ SOFTWARE.
 #include  "setup.h"
 #include "OLED_Driver.h"
 #include "OLED_GUI.h"
-#include "defines.h"
+
 /* Private macro */
 
 /* Private variables */
@@ -83,8 +83,10 @@ int main(void)
   //TIM4_Slave_Init();
   TIM5->CR1 |= TIM_CR1_CEN;
   TIM2->CR1 |= TIM_CR1_CEN;
-  NVIC_EnableIRQ(TIM5_IRQn);
-  __enable_irq ();
+  //NVIC_EnableIRQ(TIM5_IRQn);
+  //__enable_irq ();
+
+
   while (1)
   {
 		uint8_t sec = 0;
@@ -92,16 +94,20 @@ int main(void)
 		sDev_time.Hour = 12;
 		sDev_time.Min = 34;
 		sDev_time.Sec = 56;
-		for (;;) {
+		for (;;)
+		{
 			sec++;
 			sDev_time.Sec = sec;
-			if (sec == 60) {
-				sDev_time.Min = sDev_time.Min + 1;
+			if (sec == 60)
+			{
+			    sDev_time.Min = sDev_time.Min + 1;
 				sec = 0;
-				if (sDev_time.Min == 60) {
+				if (sDev_time.Min == 60)
+				{
 					sDev_time.Hour =  sDev_time.Hour + 1;
 					sDev_time.Min = 0;
-					if (sDev_time.Hour == 24) {
+					if (sDev_time.Hour == 24)
+					{
 					  sDev_time.Hour = 0;
 					  sDev_time.Min = 0;
 					  sDev_time.Sec = 0;
@@ -109,7 +115,7 @@ int main(void)
 				}
 			}
 			GUI_Showtime(0, 22, 127, 47, &sDev_time, WHITE);
-			Driver_Delay_ms(1000);//Analog clock 1s
+			//Driver_Delay_ms(1000);//Analog clock 1s
 		}
   }
 
@@ -134,4 +140,10 @@ void TIM5_IRQHandler(void)
 	WRITE_REG(TIM5->SR, ~(TIM_SR_UIF));
 	i1 = 0;
 	TIM5->CR1 |= TIM_CR1_CEN;
+}
+
+void SysTick_Handler(void)
+{
+
+
 }
